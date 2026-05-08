@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <title>LIFF Sample</title>
+
+  https://static.line-scdn.net/liff/edge/2/sdk.jsscript>
+
+</head>
+
+<body>
+ 
+<script>
+const LIFF_ID = "あなたのLIFF_ID";
+
+async function initLIFF() {
+  await liff.init({ liffId: LIFF_ID });
+
+  if (!liff.isLoggedIn()) {
+    liff.login();
+  }
+}
+
+initLIFF();
+
+async function getUser() {
+  const profile = await liff.getProfile();
+  return {
+    userId: profile.userId,
+    displayName: profile.displayName
+  };
+}
+</script>
+
+</body>
+
+</html>
+
