@@ -11,9 +11,14 @@
 </head>
 
 <body>
- 
+
+
+<h2>LIFFテスト</h2>
+
+<button onclick="testUser()">userId確認</button>
+
 <script>
-const LIFF_ID = "あなたのLIFF_ID";
+const LIFF_ID = "2010007808-kyL6Bb1k";
 
 async function initLIFF() {
   await liff.init({ liffId: LIFF_ID });
@@ -31,6 +36,11 @@ async function getUser() {
     userId: profile.userId,
     displayName: profile.displayName
   };
+}
+
+async function testUser() {
+  const user = await getUser();
+  alert("userId: " + user.userId + "\n名前: " + user.displayName);
 }
 </script>
 
