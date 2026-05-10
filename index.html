@@ -65,7 +65,7 @@ async function send() {
   console.log("送信データ", data);
 
   // ★ここを書き換える★
-  const url = "https://defaultdfe355c872dd4223bea83b781dc55d.06.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8e9695d10b55485cbb4a971fda01407c/triggers/manual/paths/invoke?api-version=1";
+  const url = "https://prod-04.japanwest.logic.azure.com:443/workflows/1b49670a2a464edfaf11f50ced94d5b7/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=-vfQp12wiWUF-OrAQm38Y_7MXIAY963B2P3Em_eUodA";
   await fetch(url, {
     method: "POST",
     headers: {
