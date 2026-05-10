@@ -1,23 +1,30 @@
 
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title>LIFF Sample</title>
+  <title>相談フォーム</title>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
 <body>
 
-<h2>LIFFテスト</h2>
+<h2>相談フォーム</h2>
+
+<!-- 入力フォーム -->
+<p>内容</p>
+<input type="text" id="msg" placeholder="内容を入力してください">
+
+<br><br>
 
 <button onclick="testUser()">userId確認</button>
+<button onclick="send()">送信</button>
 
 <script>
 const LIFF_ID = "2010027289-dBxhMjuU";
 
+// 初期化
 async function initLIFF() {
   await liff.init({ liffId: LIFF_ID });
 
@@ -29,6 +36,7 @@ async function initLIFF() {
 
 initLIFF();
 
+// ユーザー取得
 async function getUser() {
   const profile = await liff.getProfile();
   return {
@@ -37,13 +45,42 @@ async function getUser() {
   };
 }
 
+// 確認ボタン
 async function testUser() {
   const user = await getUser();
   alert("userId: " + user.userId + "\n名前: " + user.displayName);
+}
+
+// 送信処理
+async function send() {
+
+  const user = await getUser();
+
+  let data = {
+    userId: user.userId,
+    userName: user.displayName,
+    message: document.getElementById("msg").value
+  };
+
+  console.log("送信データ", data);
+
+  // ★ここを書き換える★
+  const url = "ここにPowerAutomateのURLを貼る";
+
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  alert("送信完了");
 }
 </script>
 
 </body>
 </html>
+
 
 
