@@ -1,17 +1,15 @@
 
+
 <!DOCTYPE html>
 <html>
 
 <head>
-
   <meta charset="utf-8">
   <title>LIFF Sample</title>
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
 <body>
-
 
 <h2>LIFFテスト</h2>
 
@@ -25,6 +23,7 @@ async function initLIFF() {
 
   if (!liff.isLoggedIn()) {
     liff.login();
+    return;
   }
 }
 
@@ -45,6 +44,6 @@ async function testUser() {
 </script>
 
 </body>
-
 </html>
+
 
